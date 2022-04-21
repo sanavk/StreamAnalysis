@@ -1,0 +1,81 @@
+<html lang="zxx">
+<head>
+    <title>SCHOOL</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords"
+          content="Invest Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Index-Page-CSS -->
+    <link rel="stylesheet" href="/static/login/css/style.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+          rel="stylesheet">
+    <!-- //fonts -->
+    <!-- Font-Awesome-File -->
+    <link rel="stylesheet" href="/static/login/css/fontawesome-all.css" type="text/css" media="all">
+</head>
+
+<body>
+<h1 class="title-agile text-center"></h1>
+<div class="content-w3ls" style="margin-top: 80px">
+    <div class="agileits-grid">
+
+        <div class="content-top-agile" style="margin-top: 50px">
+            <h2>Login</h2>
+        </div>
+        <div class="content-bottom">
+            <form action="/login_post" method="post">
+                <i class="fab fa-centercode"></i>
+                <div class="field_w3ls">
+                    <div class="field-group">
+                        <input name="textfield" id="text1" type="text" value="" placeholder="Username" required>
+                    </div>
+                    <div class="field-group">
+                        <input name="textfield2" id="email" type="password" value="" placeholder="Passsword" required>
+                    </div>
+
+                </div>
+                <div class="wthree-field">
+                    <input id="saveForm" name="saveForm" type="submit" value="Login"/>
+                </div>
+            </form>
+        </div>
+        <!-- //content bottom -->
+    </div>
+</div>
+<div class="copyright text-center">
+
+</div>
+<!--//copyright-->
+<script src="/static/login/js/jquery-2.2.3.min.js"></script>
+<!-- script for show password -->
+<script>
+    $(".toggle-password").click(function () {
+
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+</script>
+<!-- /script for show password -->
+
+</body>
+<!-- //Body -->
+
+</html>
