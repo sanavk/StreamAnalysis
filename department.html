@@ -1,0 +1,82 @@
+{% extends "admin/admin_home.html" %}
+{% block body %}
+
+    <div class="mainpanel">
+        <div class="pageheader">
+            <div class="media">
+                <div class="pageicon pull-left">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="media-body">
+                    <ul class="breadcrumb">
+                        <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+                        <li><a href="#">Admin</a></li>
+                        <li>Add Stream</li>
+                    </ul>
+                    <h5><b>STREAM REGISTRATION</b></h5>
+                </div>
+            </div>
+        </div>
+        <div class="contentpanel">
+
+
+            <form id="form1" name="form1" method="post" action="/admin_add_dept_post">
+                <br>
+                <table class="table table-responsive container-fluid">
+                    <tr>
+                        <td width="190"><strong>Stream Name</strong></td>
+                        <td>
+                            <input type="text" name="textfield" id="dp" class="form-control" required/>
+                            <label id="labb"> </label></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="button" id="button" value="REGISTER" class="btn btn-success-alt"/></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <script src="/static/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#dp").keyup(function () {
+                dept = $("#dp").val()
+                $.ajax({
+                    url: '/depart_check',
+                    type: 'post',
+                    data: {dept: dept},
+                    success: function (res) {
+                        val = res['status']
+                        if (val == 'ok') {
+                            $(':input[type="submit"]').prop('disabled', true);
+                            $("#labb").css("color", "red");
+                            $("#labb").empty();
+                            $("#labb").append("department already existing");
+
+                        }
+                        else {
+                            $(':input[type="submit"]').prop('disabled', false);
+                            $("#labb").empty();
+
+                        }
+                        //alert(val);
+                        return true;
+                    },
+                    error: function (res) {
+                        return false;
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+{% endblock %}

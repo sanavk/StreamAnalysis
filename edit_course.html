@@ -1,0 +1,108 @@
+{% extends "admin/admin_home.html" %}
+{% block body %}
+
+    <div class="mainpanel">
+        <div class="pageheader">
+            <div class="media">
+                <div class="pageicon pull-left">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="media-body">
+                   <ul class="breadcrumb">
+                        <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+                        <li><a href="#">Admin</a></li>
+                        <li>Admin</li>
+                    </ul>
+                    <h5><b></b></h5>
+                </div>
+            </div>
+        </div>
+        <div class="contentpanel">
+
+
+            <form id="form1" name="form1" method="post" action="/admin_edit_course_post">
+                <br>
+              <input type="hidden" value="{{ data['course_id'] }}" name="hh">
+                <table class="table table-responsive container-fluid">
+                    <tr>
+                        <td>DEPARTMENT</td>
+                        <td>
+                            <select name="select" id="select" class="form-control">
+                                {% for i in dd %}
+                                    <option value="{{ i['did'] }}">{{ i['department_name'] }}</option>
+                                {% endfor %}
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>COURSE CODE</td>
+                        <td>
+                            <input type="text" name="textfield" id="cd" class="form-control"  value="{{ data['course_code'] }}"/>
+                         <label id="labb"> </label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>COURSE NAME</td>
+                        <td><label for="textfield2"></label>
+                            <input type="text" name="textfield2" id="textfield2" class="form-control"  value="{{ data['course_name'] }}"/></td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="button" id="button" value="Save" class="btn btn-success"/></td>
+                    </tr>
+                </table>
+            </form>
+
+
+        </div>
+    </div>
+
+
+
+
+    <script src="/static/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#cd").keyup(function () {
+                code = $("#cd").val()
+                $.ajax({
+                    url: '/course_check',
+                    type: 'post',
+                    data: {code: code},
+                    success: function (res) {
+                        val = res['status']
+                        if (val == 'ok') {
+                            $(':input[type="submit"]').prop('disabled', true);
+                            $("#labb").css("color", "red");
+                             $("#labb").empty();
+                            $("#labb").append("department already existing");
+
+                        }
+                        else {
+                            $(':input[type="submit"]').prop('disabled', false);
+                            $("#labb").empty();
+
+                        }
+                        //alert(val);
+                        return true;
+                    },
+                    error: function (res) {
+                        return false;
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

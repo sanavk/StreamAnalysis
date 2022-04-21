@@ -1,0 +1,61 @@
+{% extends "admin/admin_home.html" %}
+{% block body %}
+
+    <div class="mainpanel">
+        <div class="pageheader">
+            <div class="media">
+                <div class="pageicon pull-left">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="media-body">
+                    <ul class="breadcrumb">
+                        <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+                        <li><a href="#">Department</a></li>
+                        <li>View Department</li>
+                    </ul>
+                    <h5><b>REGISTERD DEPARTMENTS</b></h5>
+                </div>
+            </div>
+        </div>
+        <div class="contentpanel">
+
+
+            <form id="form1" name="form1" method="post" action="/admin_add_dept_search_post">
+
+
+                <table width="379">
+                    <tr>
+                        <td width="371"><h1>
+                            <input name="name" type="search" class="form-control" placeholder="Search"/>
+                        </h1>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <table class="table table-responsive container-fluid">
+                    <tr>
+                        <td width="100">#</td>
+                        <td>DEPARTMENT</td>
+                        <td width="50"></td>
+                        <td width="50"></td>
+                    </tr>
+                    {% for i in data %}
+                        <tr>
+                            <td>&nbsp;{{ loop.index }}</td>
+                            <td>&nbsp;{{ i["department_name"] }}</td>
+                            <td><a href="/admin_edit_dept/{{ i["did"] }}" class="btn btn-success-alt">UPDATE</a></td>
+                            <td><a href="/admin_delete_dept/{{ i["did"] }}" class="btn btn-danger-alt"
+                                   onclick=" return confirm('Delete selected item?')">DELETE</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            </form>
+
+
+        </div>
+    </div>
+
+{% endblock %}

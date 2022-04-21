@@ -1,0 +1,61 @@
+{% extends "admin/admin_home.html" %}
+{% block body %}
+
+
+       <div class="mainpanel">
+            <div class="pageheader">
+                <div class="media">
+                    <div class="pageicon pull-left">
+                        <i class="fa fa-home"></i>
+                    </div>
+                    <div class="media-body">
+                        <ul class="breadcrumb">
+                        <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+                        <li><a href="#">Admin</a></li>
+                        <li>Admin</li>
+                    </ul>
+                    <h5><b></b></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="contentpanel">
+
+
+
+
+<form id="form1" name="form1" method="post" action="/admin_add_course_search_post">
+ <table width="379">
+    <tr>
+      <td width="371"><h1>
+        <input name="search" type="search" class="form-control" placeholder="Search"/>
+      </h1>
+      </td>
+      </tr>
+  </table>
+  <table width="589" class="table table-responsive container-fluid">
+    <tr>
+    <td width="67">#</td>
+      <td>Course</td>
+      <td>MainStreamCode</td>
+      <td>MainStreamName</td>
+        <td width="22"></td>
+        <td width="36"></td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i["department_name"] }}</td>
+      <td>&nbsp;{{ i["course_code" ]}}</td>
+      <td>{{ i["course_name"] }}</td>
+      <td width="50"><div align="center"><a href="/admin_edits_course/{{ i['course_id'] }}" class="btn btn-success">edit</a></div></td>
+      <td width="50"><div align="center"><a href="/admin_delete_course/{{ i['course_id'] }}" class="btn btn-success" onclick=" return confirm('Delete selected item?')">delete</a></div></td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+
+
+            </div></div>
+
+{% endblock %}
